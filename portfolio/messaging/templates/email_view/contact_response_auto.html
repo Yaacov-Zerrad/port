@@ -1,0 +1,24 @@
+{% autoescape off %}
+
+<div class="container" dir="rtl">
+    <!-- <h5>hello sa mere</h5> -->
+<h5>{{name}}שלום </h5>
+
+
+<p>
+קיבלנו את המייל שלך לגבי  {{ subject }}. <br><br>
+נחזור אילכם במהירות האפשרית<br>
+אתה יכול בזמן הזה לגלוש באתר שלי
+link: https//{{domain}}{% url 'view:home' %}
+
+</p>
+
+</div>
+
+
+
+
+
+
+
+{% endautoescape %}

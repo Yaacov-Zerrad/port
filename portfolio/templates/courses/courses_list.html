@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+                
+{% block content %}
+
+<div class="container">
+    <div class="col-6">
+        <h1>list courses</h1>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block js %}
+<script>
+fetch("http://127.0.0.1:8000/api/courses/")
+    .then(res=> res.json())
+    .then(data => console.log(data))
+    .catch(res => console.log(res))
+</script>
+{% endblock js %}
