@@ -18,7 +18,7 @@ class ContactForm(forms.ModelForm):
                 # 'placeholder':f'Your {name}'
                 #'type': 'hidden'
             })
-    
+    files = forms.FileField()
     class Meta:
         model = Contact
-        fields = ['subject','name', 'email', 'phone', 'title', 'message', 'img']
+        fields = ['subject','name', 'email', 'phone', 'title', 'message', 'files']

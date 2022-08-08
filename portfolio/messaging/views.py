@@ -11,9 +11,8 @@ from .email import EmailCustom
 from django.template.loader import get_template
 
 def contact_view(request):
-    form = ContactForm()
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             val = form.save()
             name = val.name
@@ -31,6 +30,8 @@ def contact_view(request):
             msg.attach_alternative(html_content, "text/html")
             msg.send()
             return redirect('messaging:contact_success')
+    else:
+        form = ContactForm()
     return render(request, 'messaging/contact_form.html', {'form':form})
 
 
