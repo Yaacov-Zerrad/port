@@ -24,7 +24,7 @@ def contact_view(request):
             data_html = {'name': name, 'subject':subject_contact, 'domain':current_site.domain}
             
             # data for send email
-            subject, from_email, to = 'contact es-shops', 'z0583214808@gmail.com', email_to
+            subject, from_email, to = f'{settings.NAME_SITE}-פנייתך התקבלה '  , 'z0583214808@gmail.com', email_to
             text_content = 'This is an important message.'
             html_content = render_to_string('email_view/contact_response_auto.html', data_html)
             msg = EmailMultiAlternatives(subject, text_content, from_email, [to])

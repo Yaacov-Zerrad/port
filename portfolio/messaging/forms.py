@@ -15,10 +15,10 @@ class ContactForm(forms.ModelForm):
                 
             self.fields[name].widget.attrs.update({
                 'class': 'form-control',
-                'placeholder':f'Your {name}'
+                # 'placeholder':f'Your {name}'
                 #'type': 'hidden'
             })
     
     class Meta:
         model = Contact
-        fields = ['subject','name', 'email', 'title', 'message', 'img']
+        fields = ['subject','name', 'email', 'phone', 'title', 'message', 'img']

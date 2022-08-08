@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-md-center">
-        <h3>צור קשר</h3>
+<!-- Contact-->
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">בואו תיצרו קשר!</h2>
+                <hr class="divider" />
+                <p class="text-muted mb-5">מוכן להתחיל את הפרויקט הבא שלך איתנו? שלחו לנו הודעה ונחזור אליכם בהקדם האפשרי!</p>
+            </div>
+        </div>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+
+                    <button type="submit" class="btn btn-outline-dark">שלח !</button>
+                </form>
+            </div>
+
+        </div>
     </div>
-    <div class="row justify-content-md-center">
-
-        <div class="col-5">
-            
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-
-
-    <button type="submit" class="btn btn-outline-dark">Send message</button>
-</form>
-</div>
-
-</div>
-</div>
-{% endblock content %}
+    {% endblock content %}
