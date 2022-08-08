@@ -7,7 +7,8 @@ from view.models import IndexPageModel, ServiceModel
 def home(request):
     services =  ServiceModel.objects.all()
     text_page = IndexPageModel.objects.filter(default=True)
-    text_page = text_page[0]
+    if text_page:
+        text_page = text_page[0]
     return render(request, 'index.html', {'home': True, 'services':services, 'text_page':text_page, 'NAME_SITE':NAME_SITE})
 
 
