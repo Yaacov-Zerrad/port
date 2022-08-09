@@ -139,8 +139,8 @@ EMAIL_PORT = EMAIL_PORT
 
 
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
 
 NAME_SITE = 'TheDevPython'
 
@@ -148,3 +148,4 @@ DATETIME_FORMAT="%Y-%m-%d%H:%M"
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
+SMS_BACKEND = 'sms.backends.console.SmsBackend'
