@@ -143,3 +143,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
 
 NAME_SITE = 'יעקב-דבלופר'
+
+
+# for heroku
+import django_heroku
+import dj_database_url
+django_heroku.settings(locals())
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# for my site and heroku
+ALLOWED_HOSTS = ['https://yaacov-developer.herokuapp.com/', '127.0.0.1']
