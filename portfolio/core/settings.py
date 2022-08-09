@@ -24,9 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b1bu#^)q!j+mj^3^qcz=!1l@+1p@qi6@hh!&f8x@w&lv#f%cj$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+
+# changing in django heroku look down
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -50,6 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # for django-heroku
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -148,11 +153,13 @@ NAME_SITE = 'יעקב-דבלופר'
 # for heroku
 import django_heroku
 import dj_database_url
+
 django_heroku.settings(locals())
+
+ALLOWED_HOSTS = ['https://yaacov-developer.herokuapp.com/', '127.0.0.1']
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# for my site and heroku
-ALLOWED_HOSTS = ['https://yaacov-developer.herokuapp.com/', '127.0.0.1']
 
 
 # FOR heroku
