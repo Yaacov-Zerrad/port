@@ -1,5 +1,4 @@
 import email
-from turtle import update
 from django.db import models
 from django.core.validators import RegexValidator
 phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")

@@ -3,6 +3,9 @@
 
 ### link for help
 https://whitenoise.evans.io/en/stable/django.html
+https://devcenter.heroku.com/articles/django-app-configuration
+
+https://dev.to/giftedstan/heroku-how-to-deploy-a-django-app-with-postgres-in-5-minutes-5lk
 
 ## create a django 
 
@@ -83,4 +86,37 @@ else:
 
 git init 
 git add .
+git commit -m "deploy"
 
+# CREATE ACCOUNT IN HEROKU
+
+### install heroku CLI of the link:
+https://devcenter.heroku.com/articles/heroku-cli
+
+## in the terminal 
+
+### log you (return a web page for login):
+heroku login 
+
+### create a your domaine 
+heroku create <your_name_domaine>
+
+#### example (return your domain address add in the  ALLOWED_HOSTS variable)
+heroku create yaa-developer
+
+#### * git add and commit the modification
+git push heroku master
+
+### if error in master write commande in terminal
+git checkout -b main
+git branch -D master
+git push heroku main
+
+### if error in deploy config in the terminal... followed by command (git push heroku master)
+
+heroku config:set DISABLE_COLLECTSTATIC=1
+
+
+## rub server 
+heroku run python manage.py makemigrations
+heroku run python manage.py migrate
