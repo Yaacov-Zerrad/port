@@ -47,9 +47,9 @@
 
                             {% for example in examples %}
                             <div class="col-lg-4 col-sm-6">
-                                <a class="portfolio-box" href="{{ example.img.url }}"
+                                <a class="portfolio-box" src="{{ example.img.url }}"
                                     title="{{example.project_name}}">
-                                    <img class="img-fluid" src="{{ example.img.url }}" alt="..." />
+                                    <img class="img-fluid" src="{{ example.img.url }}" alt="{{example.project_name}}" />
                                     <div class="portfolio-box-caption">
                                         <div class="project-category text-white-50">{{example.category}}</div>
                                         <div class="project-name">{{example.project_name}}</div>

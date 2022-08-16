@@ -120,3 +120,9 @@ heroku config:set DISABLE_COLLECTSTATIC=1
 ## rub server 
 heroku run python manage.py makemigrations
 heroku run python manage.py migrate
+
+## for open
+heroku open
+
+### debug for the media deploy
+

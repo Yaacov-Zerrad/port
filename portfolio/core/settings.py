@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-b1bu#^)q!j+mj^3^qcz=!1l@+1p@qi6@hh!&f8x@w&lv#f%cj$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 # changing in django heroku look down
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'messaging',
     'view',
     'whitenoise.runserver_nostatic',
+    
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +58,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # for django-heroku
     'whitenoise.middleware.WhiteNoiseMiddleware',
+   
+   
+    # "django.contrib.staticfiles",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -124,18 +129,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     )
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
+
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
+# ajouter--
+#----------------------------------
 from info.info import * 
 # for email send
 EMAIL_USE_TLS = EMAIL_USE_TLS
@@ -146,10 +165,8 @@ EMAIL_PORT = EMAIL_PORT
 
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/').replace('\\', '/')
-MEDIA_URL = '/media/'
 
-NAME_SITE = 'יעקב-דבלופר'
+NAME_SITE = 'דבלופ-יעקב'
 
 
 # for heroku
@@ -157,13 +174,6 @@ import django_heroku
 import dj_database_url
 
 django_heroku.settings(locals())
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
-# FOR heroku
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')
-
 
 
 db_from_env = dj_database_url.config(conn_max_age=600)
@@ -182,5 +192,33 @@ DATABASE_URL='postgres://ibyblvpeousxtb:03f7b0ea9f3294837ef4530ba643cd29a7fdad5f
 #             'NAME': BASE_DIR / 'db.sqlite3',
 #         }
 #     }
+
+# from info.imgur import *
+# IMGUR_CONSUMER_ID = IMGUR_CONSUMER_ID
+# IMGUR_CONSUMER_SECRET = IMGUR_CONSUMER_SECRET
+# IMGUR_USERNAME = IMGUR_USERNAME
+# IMGUR_ACCESS_TOKEN = IMGUR_ACCESS_TOKEN 
+# IMGUR_ACCESS_TOKEN_REFRESH = IMGUR_ACCESS_TOKEN_REFRESH 
+
+
+# from django_imgur.storage import ImgurStorage
+# STORAGE_MEDIA = ImgurStorage()
+
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+from info.cloudinary import *
+# adding config
+cloudinary.config( 
+  cloud_name = cloud_name, 
+  api_key = api_key, 
+  api_secret = api_secret
+)
+
+
+
+
 
 

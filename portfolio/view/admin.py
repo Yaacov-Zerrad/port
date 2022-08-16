@@ -1,5 +1,5 @@
 from django.contrib import admin
-from view.models import ExampleModel, IndexPageModel, ServiceModel
+from view.models import ExampleModel, IndexPageModel, SatisticModel, ServiceModel
 from core.settings import NAME_SITE
 
 
@@ -13,3 +13,4 @@ admin.site.index_title = NAME_SITE
 admin.site.register(ServiceModel)
 admin.site.register(IndexPageModel)
 admin.site.register(ExampleModel)
+admin.site.register(SatisticModel)

@@ -1,6 +1,11 @@
 from time import strftime
 from django.db import models
 
+# from django_imgur.storage import ImgurStorage
+# STORAGE = ImgurStorage()
+# from core.settings import STORAGE_MEDIA
+from cloudinary.models import CloudinaryField
+
 
 class CustomDateTimeField(models.DateTimeField):
     def value_to_string(self, obj):
@@ -54,7 +59,8 @@ class IndexPageModel(models.Model):
 class ExampleModel(models.Model):
     category = models.CharField(max_length=255)
     project_name = models.CharField(max_length=255)
-    img = models.ImageField(upload_to='Example/',blank=True)
+    # img = models.ImageField(upload_to='Example/',blank=True)
+    img = CloudinaryField('image')
     slug_auto = models.SlugField(blank=True)
     # slug = models.SlugField(blank=True)
     url = models.CharField(max_length=255, blank=True)
@@ -62,3 +68,11 @@ class ExampleModel(models.Model):
         
     def __str__(self):
         return self.project_name
+    
+    
+class SatisticModel(models.Model):
+    home_view = models.PositiveIntegerField(default=0)
+    home_view_week = models.PositiveIntegerField(default=0)
+    
+    def __str__(self):
+        return self.home_view
