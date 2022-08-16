@@ -231,7 +231,10 @@ CLOUDINARY_STORAGE  =  {
 }
 
 MEDIA_URL = '/media/'  # or any prefix you choose
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+#for media tous seul
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# for medeia and text
+DEFAULT_FILE_STORAGE  =  'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 

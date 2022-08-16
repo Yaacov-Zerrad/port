@@ -59,12 +59,13 @@ class IndexPageModel(models.Model):
 class ExampleModel(models.Model):
     category = models.CharField(max_length=255)
     project_name = models.CharField(max_length=255)
-    img = models.ImageField(upload_to='images/', blank=True)
+    img = models.ImageField(upload_to='images/', height_field="avatar_height", width_field="avatar_width",blank=True)
     # img = CloudinaryField('image')
     slug_auto = models.SlugField(blank=True)
     # slug = models.SlugField(blank=True)
     url = models.CharField(max_length=255, blank=True)
-    
+    avatar_height = 650
+    avatar_width = 350
         
     def __str__(self):
         return self.project_name
