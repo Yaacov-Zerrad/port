@@ -3,16 +3,16 @@ from core.settings import NAME_SITE
 
 from view.models import ExampleModel, IndexPageModel, SatisticModel, ServiceModel
 # satistic = SatisticModel.objects.get_or_create(id=1)
-def site_view():
-    satistic, created = SatisticModel.objects.get_or_create(id=1)
-    if created == False:
-        satistic.home_view+=1
-        satistic.home_view_week+=1
-        satistic.save()
+# def site_view():
+#     satistic, created = SatisticModel.objects.get_or_create(id=1)
+#     if created == False:
+#         satistic.home_view+=1
+#         satistic.home_view_week+=1
+#         satistic.save()
         
         
 def home(request):
-    site_view()
+    # site_view()
     services =  ServiceModel.objects.all()
     text_page = IndexPageModel.objects.filter(default=True)
     examples = ExampleModel.objects.all()
@@ -24,21 +24,21 @@ def home(request):
 
 
 def courses(request):
-    site_view()
+    # site_view()
     return render(request, 'courses.html')
 
 def examples(request):
-    site_view()
+    # site_view()
     examples = ExampleModel.objects.all()
     return render(request, 'examples.html', {'examples':examples})
 
 def services(request):
-    site_view()
+    # site_view()
     services =  ServiceModel.objects.all()
     return render(request, 'services.html', {'services':services})
 
 
 def service_detail(request, pk):
-    site_view()
+    # site_view()
     detail = get_object_or_404(ServiceModel, pk=pk)
     return render(request, 'service_detail.html', {'detail':detail})

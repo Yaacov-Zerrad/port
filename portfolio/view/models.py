@@ -59,8 +59,8 @@ class IndexPageModel(models.Model):
 class ExampleModel(models.Model):
     category = models.CharField(max_length=255)
     project_name = models.CharField(max_length=255)
-    # img = models.ImageField(upload_to='Example/',blank=True)
-    img = CloudinaryField('image')
+    img = models.ImageField(upload_to='images/', blank=True)
+    # img = CloudinaryField('image')
     slug_auto = models.SlugField(blank=True)
     # slug = models.SlugField(blank=True)
     url = models.CharField(max_length=255, blank=True)

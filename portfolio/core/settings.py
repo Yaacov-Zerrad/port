@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'messaging',
     'view',
     'whitenoise.runserver_nostatic',
     
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
     'cloudinary',
 ]
 
@@ -205,20 +207,31 @@ IMGUR_ACCESS_TOKEN_REFRESH = IMGUR_ACCESS_TOKEN_REFRESH
 # STORAGE_MEDIA = ImgurStorage()
 
 
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# import cloudinary
+# import cloudinary.uploader
+# import cloudinary.api
 
 from info.cloudinary import *
-# adding config
-cloudinary.config( 
-  cloud_name = cloud_name, 
-  api_key = api_key, 
-  api_secret = api_secret
-)
+# # adding config
+# cloudinary.config( 
+#   cloud_name = cloud_name, 
+#   api_key = api_key, 
+#   api_secret = api_secret
+# )
 
 
 
+# cloud_name = str(cloud_name)
+
+
+CLOUDINARY_STORAGE  =  { 
+    'CLOUD_NAME' :  cloud_name , 
+    'API_KEY' : api_key, 
+    'API_SECRET' : api_secret
+}
+
+MEDIA_URL = '/media/'  # or any prefix you choose
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
